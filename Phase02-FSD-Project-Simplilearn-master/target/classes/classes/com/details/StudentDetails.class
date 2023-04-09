@@ -1,0 +1,77 @@
+package com.details;
+
+import javax.persistence.Column;
+import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Entity;
+
+@Entity
+@Table(name = "Student_Details")
+public class StudentDetails
+{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "Id")
+    private int Id;
+    @Column(name = "Student_Name")
+    private String Name;
+    @Column(name = "Roll_No")
+    private String RollNo;
+    @Column(name = "Class")
+    private String StudentClass;
+    
+    public StudentDetails() {
+    }
+    
+    public StudentDetails(final String name, final String rollNo, final String class1) {
+        this.Name = name;
+        this.RollNo = rollNo;
+        this.StudentClass = class1;
+    }
+    
+    public StudentDetails(final int id, final String name, final String rollNo, final String class1) {
+        this.Id = id;
+        this.Name = name;
+        this.RollNo = rollNo;
+        this.StudentClass = class1;
+    }
+    
+    public int getId() {
+        return this.Id;
+    }
+    
+    public void setId(final int id) {
+        this.Id = id;
+    }
+    
+    public String getName() {
+        return this.Name;
+    }
+    
+    public void setName(final String name) {
+        this.Name = name;
+    }
+    
+    public String getRollNo() {
+        return this.RollNo;
+    }
+    
+    public void setRollNo(final String rollNo) {
+        this.RollNo = rollNo;
+    }
+    
+    public String getStudentClass() {
+        return this.StudentClass;
+    }
+    
+    public void setClass(final String class1) {
+        this.StudentClass = class1;
+    }
+    
+    @Override
+    public String toString() {
+        return "StudentDetails [Id=" + this.Id + ", Name=" + this.Name + ", RollNo=" + this.RollNo + ", Class=" + this.StudentClass + "]";
+    }
+}

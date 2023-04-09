@@ -1,0 +1,77 @@
+package com.details;
+
+import javax.persistence.Column;
+import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Entity;
+
+@Entity
+@Table(name = "Subject_Details")
+public class SubjectDetails
+{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "Id")
+    private int Id;
+    @Column(name = "Subject_Name")
+    private String SubjectName;
+    @Column(name = "Subject_Code")
+    private String SubjectCode;
+    @Column(name = "Subject_Teacher")
+    private String SubjectTeacher;
+    
+    public SubjectDetails() {
+    }
+    
+    public SubjectDetails(final String subjectName, final String subjectCode, final String subjectTeacher) {
+        this.SubjectName = subjectName;
+        this.SubjectCode = subjectCode;
+        this.SubjectTeacher = subjectTeacher;
+    }
+    
+    public SubjectDetails(final int id, final String subjectName, final String subjectCode, final String subjectTeacher) {
+        this.Id = id;
+        this.SubjectName = subjectName;
+        this.SubjectCode = subjectCode;
+        this.SubjectTeacher = subjectTeacher;
+    }
+    
+    public int getId() {
+        return this.Id;
+    }
+    
+    public void setId(final int id) {
+        this.Id = id;
+    }
+    
+    public String getSubjectName() {
+        return this.SubjectName;
+    }
+    
+    public void setSubjectName(final String subjectName) {
+        this.SubjectName = subjectName;
+    }
+    
+    public String getSubjectCode() {
+        return this.SubjectCode;
+    }
+    
+    public void setSubjectCode(final String subjectCode) {
+        this.SubjectCode = subjectCode;
+    }
+    
+    public String getSubjectTeacher() {
+        return this.SubjectTeacher;
+    }
+    
+    public void setSubjectTeacher(final String subjectTeacher) {
+        this.SubjectTeacher = subjectTeacher;
+    }
+    
+    @Override
+    public String toString() {
+        return "SubjectDetails [Id=" + this.Id + ", SubjectName=" + this.SubjectName + ", SubjectCode=" + this.SubjectCode + ", SubjectTeacher=" + this.SubjectTeacher + "]";
+    }
+}

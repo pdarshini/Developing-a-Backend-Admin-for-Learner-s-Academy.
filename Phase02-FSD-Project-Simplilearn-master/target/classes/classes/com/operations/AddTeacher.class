@@ -1,0 +1,50 @@
+package com.operations;
+
+import org.hibernate.Transaction;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import java.io.PrintWriter;
+import com.details.TeacherDetails;
+import com.util.Util;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.ServletResponse;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet({ "/add-teacher" })
+public class AddTeacher extends HttpServlet
+{
+    private static final long serialVersionUID = 1L;
+    
+    protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        request.getRequestDispatcher("add-teacher.html").include((ServletRequest)request, (ServletResponse)response);
+    }
+    
+    protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        final PrintWriter out = response.getWriter();
+        final String name = request.getParameter("Name");
+        final String Subject = request.getParameter("subject");
+        final String Class = request.getParameter("class");
+        try {
+            final SessionFactory factory = Util.buildConnection();
+            final Session session = factory.openSession();
+            final TeacherDetails teacherdetails = new TeacherDetails(name, Subject, Class);
+            final Transaction tx = session.beginTransaction();
+            session.save((Object)teacherdetails);
+            tx.commit();
+            if (session != null) {
+                out.println("<div align='center'><h2 style='color:green'>Teacher Added Successfully</h2><a href='admin-page.html'>Back To MainMenu</a></div>");
+            }
+            session.close();
+        }
+        catch (Exception e) {
+            out.println("<div align='center'><h2 style='color:red'>Operation Failed</h2></div>");
+        }
+    }
+}

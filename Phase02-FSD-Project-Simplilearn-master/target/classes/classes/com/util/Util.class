@@ -1,0 +1,17 @@
+package com.util;
+
+import com.details.SubjectDetails;
+import com.details.ClassDetails;
+import com.details.TeacherDetails;
+import com.details.StudentDetails;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.SessionFactory;
+
+public class Util
+{
+    private static SessionFactory factory;
+    
+    public static SessionFactory buildConnection() {
+        return Util.factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass((Class)StudentDetails.class).addAnnotatedClass((Class)TeacherDetails.class).addAnnotatedClass((Class)ClassDetails.class).addAnnotatedClass((Class)SubjectDetails.class).buildSessionFactory();
+    }
+}

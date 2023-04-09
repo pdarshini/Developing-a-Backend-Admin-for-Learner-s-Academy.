@@ -1,0 +1,77 @@
+package com.details;
+
+import javax.persistence.Column;
+import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Entity;
+
+@Entity
+@Table(name = "Teacher_Details")
+public class TeacherDetails
+{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "Id")
+    private int Id;
+    @Column(name = "Teacher_Name")
+    private String Name;
+    @Column(name = "Subject")
+    private String Subject;
+    @Column(name = "Class")
+    private String TeacherClass;
+    
+    public TeacherDetails() {
+    }
+    
+    public TeacherDetails(final String name, final String subject, final String class1) {
+        this.Name = name;
+        this.Subject = subject;
+        this.TeacherClass = class1;
+    }
+    
+    public TeacherDetails(final int id, final String name, final String subject, final String class1) {
+        this.Id = id;
+        this.Name = name;
+        this.Subject = subject;
+        this.TeacherClass = class1;
+    }
+    
+    public int getId() {
+        return this.Id;
+    }
+    
+    public void setId(final int id) {
+        this.Id = id;
+    }
+    
+    public String getName() {
+        return this.Name;
+    }
+    
+    public void setName(final String name) {
+        this.Name = name;
+    }
+    
+    public String getSubject() {
+        return this.Subject;
+    }
+    
+    public void setSubject(final String subject) {
+        this.Subject = subject;
+    }
+    
+    public String getTeacherClass() {
+        return this.TeacherClass;
+    }
+    
+    public void setTeacherClass(final String teacherClass) {
+        this.TeacherClass = teacherClass;
+    }
+    
+    @Override
+    public String toString() {
+        return "TeacherDetails [Id=" + this.Id + ", Name=" + this.Name + ", Subject=" + this.Subject + ", TeacherClass=" + this.TeacherClass + "]";
+    }
+}
